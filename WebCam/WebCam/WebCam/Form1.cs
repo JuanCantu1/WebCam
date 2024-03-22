@@ -19,6 +19,9 @@ namespace WebCam
         private FilterInfoCollection filterInfo;
         private int captureCount = 1;
         private Timer autoCaptureTimer;
+        private FileSystemWatcher watcher;
+        private string outputFolderPath = @"C:\Output";
+        private string outputImagePath = @"C:\Output\Output.jpg";
 
         public Form1()
         {
@@ -31,18 +34,28 @@ namespace WebCam
 
             // Initialize and configure the timer
             autoCaptureTimer = new Timer();
-            int interval = (int)numericUpDown1.Value*1000;
-            if (interval > 0 ){
+            int interval = (int)numericUpDown1.Value * 1000;
+            if (interval > 0)
+            {
                 autoCaptureTimer.Interval = interval;
             }
             else
             {
-                autoCaptureTimer.Interval = 1000; // 1 seconds
+                autoCaptureTimer.Interval = 1000; // 1 second
             }
             autoCaptureTimer.Tick += AutoCaptureTimer_Tick;
 
             // Subscribe to the ValueChanged event of numericUpDown1
             numericUpDown1.ValueChanged += numericUpDown1_ValueChanged;
+
+            // Load the image into PictureBox named "Output"
+            LoadImageToOutputPictureBox();
+
+            // Initialize file system watcher
+            InitializeFileSystemWatcher();
+
+            // Load the image into PictureBox named "Output"
+            LoadImageToOutputPictureBox();
         }
 
         void StartCamera()
@@ -140,15 +153,75 @@ namespace WebCam
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            int interval = (int)numericUpDown1.Value*1000;
+            int interval = (int)numericUpDown1.Value * 1000;
 
             if (interval <= 0)
             {
-                interval = 1000; 
-                numericUpDown1.Value = interval; 
+                interval = 1000;
+                numericUpDown1.Value = interval;
             }
 
             autoCaptureTimer.Interval = interval;
+        }
+
+        private void InitializeFileSystemWatcher()
+        {
+            watcher = new FileSystemWatcher();
+            watcher.Path = outputFolderPath;
+            watcher.Filter = "Output.jpg";
+            watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName;
+
+            // Subscribe to events
+            watcher.Changed += new FileSystemEventHandler(OnOutputImageChanged);
+            watcher.Created += new FileSystemEventHandler(OnOutputImageChanged);
+            watcher.Deleted += new FileSystemEventHandler(OnOutputImageDeleted);
+
+            // Begin watching
+            watcher.EnableRaisingEvents = true;
+        }
+
+        private void OnOutputImageChanged(object sender, FileSystemEventArgs e)
+        {
+            // Reload the image into PictureBox when Output.jpg is modified or created
+            LoadImageToOutputPictureBox();
+        }
+
+        private void OnOutputImageDeleted(object sender, FileSystemEventArgs e)
+        {
+            // Clear PictureBox when Output.jpg is deleted
+            Output.Image = null;
+        }
+
+        private void LoadImageToOutputPictureBox()
+        {
+            try
+            {
+                // Check if the file exists
+                if (File.Exists(outputImagePath))
+                {
+                    using (FileStream fs = new FileStream(outputImagePath, FileMode.Open, FileAccess.Read))
+                    {
+                        // Load the image into a MemoryStream
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            fs.CopyTo(ms);
+                            // Create the image from the MemoryStream
+                            Image originalImage = Image.FromStream(ms);
+                            // Display the image in the PictureBox
+                            Output.Image = originalImage;
+                        }
+                    }
+                }
+                else
+                {
+                    // If file doesn't exist, clear PictureBox
+                    Output.Image = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading image: " + ex.Message);
+            }
         }
     }
 }

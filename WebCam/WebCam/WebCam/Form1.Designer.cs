@@ -38,9 +38,12 @@
             this.BtnAutoCapture = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
+            this.Output = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Pic1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Output)).BeginInit();
             this.SuspendLayout();
             // 
             // Pic1
@@ -160,11 +163,34 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Time between captures";
             // 
+            // Output
+            // 
+            this.Output.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Output.Location = new System.Drawing.Point(815, 15);
+            this.Output.Margin = new System.Windows.Forms.Padding(4);
+            this.Output.Name = "Output";
+            this.Output.Size = new System.Drawing.Size(265, 263);
+            this.Output.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Output.TabIndex = 11;
+            this.Output.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(919, 282);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 16);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Output";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(783, 441);
+            this.ClientSize = new System.Drawing.Size(1174, 441);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Output);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.BtnAutoCapture);
@@ -181,6 +207,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pic1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Output)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,6 +225,8 @@
         private System.Windows.Forms.Button BtnAutoCapture;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox Output;
+        private System.Windows.Forms.Label label3;
     }
 }
 
