@@ -40,6 +40,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Output = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.BtnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Pic1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -184,11 +185,23 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "Output";
             // 
+            // BtnDelete
+            // 
+            this.BtnDelete.Location = new System.Drawing.Point(876, 316);
+            this.BtnDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnDelete.Name = "BtnDelete";
+            this.BtnDelete.Size = new System.Drawing.Size(121, 41);
+            this.BtnDelete.TabIndex = 13;
+            this.BtnDelete.Text = "Delete File";
+            this.BtnDelete.UseVisualStyleBackColor = true;
+            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1174, 441);
+            this.Controls.Add(this.BtnDelete);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Output);
             this.Controls.Add(this.label2);
@@ -227,6 +240,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox Output;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button BtnDelete;
     }
 }
 

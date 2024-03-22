@@ -223,5 +223,29 @@ namespace WebCam
                 MessageBox.Show("Error loading image: " + ex.Message);
             }
         }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Check if the file exists
+                if (File.Exists(outputImagePath))
+                {
+                    // Delete the file
+                    File.Delete(outputImagePath);
+                    // Clear PictureBox
+                    Output.Image = null;
+                    MessageBox.Show("Image deleted successfully.");
+                }
+                else
+                {
+                    MessageBox.Show("Image not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error deleting image: " + ex.Message);
+            }
+        }
     }
 }
