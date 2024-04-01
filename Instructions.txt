@@ -1,0 +1,16 @@
+## Instructions on how to use application ##
+--------------------------------------
+
+Do the following in your C drive:
+* Create a folder named input. This is where the captures from the camera will be saved
+* Create a folder named output. This folder will be used to store output from Neural Network and display it in the application. NOTE: must be named output.jpg
+
+//////////////////////////////////////////////////////////
+
+Potential changes needed in the applications code:
+in \WebCam\WebCam\WebCam\Form1.cs you may need to change the following:
+* In the function BtnRunPythonScript_Click you will need to modify  pythonScriptPath to the actual Python script path on your computer
+
+//////////////////////////////////////////////////////////
+
+
