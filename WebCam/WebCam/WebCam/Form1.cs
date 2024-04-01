@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -276,6 +277,28 @@ namespace WebCam
             catch (Exception ex)
             {
                 MessageBox.Show("Error deleting images: " + ex.Message);
+            }
+        }
+
+        private void BtnRunPythonScript_Click(object sender, EventArgs e)
+        {
+            // Specify the path to the Python script
+            string pythonScriptPath = @"C:\Users\johnn\invert_image.py"; // Change this to your actual Python script path
+
+            // Check if the Python script exists
+            if (System.IO.File.Exists(pythonScriptPath))
+            {
+                // Create a process start info
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.FileName = "python"; // Assuming 'python' is in the system PATH
+                startInfo.Arguments = pythonScriptPath;
+
+                // Start the process
+                Process.Start(startInfo);
+            }
+            else
+            {
+                MessageBox.Show("Python script not found.");
             }
         }
     }

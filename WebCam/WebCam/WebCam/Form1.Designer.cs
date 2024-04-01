@@ -44,6 +44,7 @@
             this.BtnDeleteInputs = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.BtnRunPythonScript = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Pic1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -230,11 +231,23 @@
             this.label5.TabIndex = 16;
             this.label5.Text = "Delete Input Files";
             // 
+            // BtnRunPythonScript
+            // 
+            this.BtnRunPythonScript.Location = new System.Drawing.Point(360, 355);
+            this.BtnRunPythonScript.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnRunPythonScript.Name = "BtnRunPythonScript";
+            this.BtnRunPythonScript.Size = new System.Drawing.Size(121, 41);
+            this.BtnRunPythonScript.TabIndex = 17;
+            this.BtnRunPythonScript.Text = "Run Script";
+            this.BtnRunPythonScript.UseVisualStyleBackColor = true;
+            this.BtnRunPythonScript.Click += new System.EventHandler(this.BtnRunPythonScript_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1174, 441);
+            this.Controls.Add(this.BtnRunPythonScript);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.BtnDeleteInputs);
@@ -281,6 +294,7 @@
         private System.Windows.Forms.Button BtnDeleteInputs;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button BtnRunPythonScript;
     }
 }
 
