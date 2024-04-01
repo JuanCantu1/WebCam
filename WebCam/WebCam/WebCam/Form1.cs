@@ -22,6 +22,8 @@ namespace WebCam
         private FileSystemWatcher watcher;
         private string outputFolderPath = @"C:\Output";
         private string outputImagePath = @"C:\Output\Output.jpg";
+        private string InputFolderPath = @"C:\Input";
+        private string InputImagePath = @"C:\Input\Input.jpg";
 
         public Form1()
         {
@@ -98,7 +100,7 @@ namespace WebCam
         private void BtnCapture_Click(object sender, EventArgs e)
         {
             Pic2.Image = Pic1.Image;
-            string fileName = @"C:\Image\" + tbFileName.Text + ".jpg";
+            string fileName = @"C:\Input\" + tbFileName.Text + ".jpg";
             var bitmap = new Bitmap(Pic2.Width, Pic2.Height);
             Pic2.DrawToBitmap(bitmap, Pic2.ClientRectangle);
             System.Drawing.Imaging.ImageFormat imageFormat = null;
@@ -144,7 +146,7 @@ namespace WebCam
         private void CaptureImage()
         {
             Pic2.Image = Pic1.Image;
-            string fileName = $@"C:\Image\capture{captureCount}.jpg";
+            string fileName = $@"C:\Input\capture{captureCount}.jpg";
             var bitmap = new Bitmap(Pic2.Width, Pic2.Height);
             Pic2.DrawToBitmap(bitmap, Pic2.ClientRectangle);
             System.Drawing.Imaging.ImageFormat imageFormat = System.Drawing.Imaging.ImageFormat.Jpeg;
@@ -245,6 +247,35 @@ namespace WebCam
             catch (Exception ex)
             {
                 MessageBox.Show("Error deleting image: " + ex.Message);
+            }
+        }
+
+        private void BtnDeleteInputs_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Directory.Exists(InputFolderPath))
+                {
+                    string[] files = Directory.GetFiles(InputFolderPath);
+
+                    foreach (string file in files)
+                    {
+                        File.Delete(file);
+                    }
+
+                    // Clear PictureBox if necessary
+                    Pic2.Image = null;
+
+                    MessageBox.Show("Images deleted successfully.");
+                }
+                else
+                {
+                    MessageBox.Show("Folder not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error deleting images: " + ex.Message);
             }
         }
     }

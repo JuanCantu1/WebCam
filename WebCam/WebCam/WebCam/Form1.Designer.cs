@@ -41,6 +41,9 @@
             this.Output = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.BtnDelete = new System.Windows.Forms.Button();
+            this.BtnDeleteInputs = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Pic1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -187,7 +190,7 @@
             // 
             // BtnDelete
             // 
-            this.BtnDelete.Location = new System.Drawing.Point(876, 316);
+            this.BtnDelete.Location = new System.Drawing.Point(885, 302);
             this.BtnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(121, 41);
@@ -196,11 +199,45 @@
             this.BtnDelete.UseVisualStyleBackColor = true;
             this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
+            // BtnDeleteInputs
+            // 
+            this.BtnDeleteInputs.Location = new System.Drawing.Point(507, 332);
+            this.BtnDeleteInputs.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnDeleteInputs.Name = "BtnDeleteInputs";
+            this.BtnDeleteInputs.Size = new System.Drawing.Size(121, 41);
+            this.BtnDeleteInputs.TabIndex = 14;
+            this.BtnDeleteInputs.Text = "Delete Files";
+            this.BtnDeleteInputs.UseVisualStyleBackColor = true;
+            this.BtnDeleteInputs.Click += new System.EventHandler(this.BtnDeleteInputs_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(893, 347);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(113, 16);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Delete Output File";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(504, 377);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(110, 16);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Delete Input Files";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1174, 441);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.BtnDeleteInputs);
             this.Controls.Add(this.BtnDelete);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Output);
@@ -241,6 +278,9 @@
         private System.Windows.Forms.PictureBox Output;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button BtnDelete;
+        private System.Windows.Forms.Button BtnDeleteInputs;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 
