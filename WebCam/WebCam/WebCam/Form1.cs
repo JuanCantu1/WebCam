@@ -195,13 +195,16 @@ namespace WebCam
             Output.Image = null;
         }
 
-        private void LoadImageToOutputPictureBox()
+        private async void LoadImageToOutputPictureBox()
         {
             try
             {
                 // Check if the file exists
                 if (File.Exists(outputImagePath))
                 {
+                    // Introduce a small delay
+                    await Task.Delay(500);
+
                     using (FileStream fs = new FileStream(outputImagePath, FileMode.Open, FileAccess.Read))
                     {
                         // Load the image into a MemoryStream
